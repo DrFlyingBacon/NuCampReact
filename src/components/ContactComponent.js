@@ -8,7 +8,7 @@ import {
     Label,
     Input,
     Col,
-    FormFeedback,
+    FormFeedback
 } from 'reactstrap';
 import {Link} from 'react-router-dom';
 
@@ -28,8 +28,8 @@ class Contact extends Component {
                 firstName: false,
                 lastName: false,
                 phoneNum: false,
-                email: false,
-            },
+                email: false
+            }
         };
 
         this.handleInputChange = this.handleInputChange.bind(this);
@@ -41,7 +41,7 @@ class Contact extends Component {
             firstName: '',
             lastName: '',
             phoneNum: '',
-            email: '',
+            email: ''
         };
 
         if (this.state.touched.firstName) {
@@ -74,7 +74,7 @@ class Contact extends Component {
 
     handleBlur = field => () => {
         this.setState({
-            touched: {...this.state.touched, [field]: true},
+            touched: {...this.state.touched, [field]: true}
         });
     };
 
@@ -84,7 +84,7 @@ class Contact extends Component {
         const value = target.type === 'checkbox' ? target.checked : target.value;
 
         this.setState({
-            [name]: value,
+            [name]: value
         });
     }
 
