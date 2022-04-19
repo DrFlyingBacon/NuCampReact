@@ -3,7 +3,7 @@
     "trailingCommaLineBreak": "none",
     "endOfLine": "lf",
     "singleQuote": true,
-    "tabWidth": 2,
+    "tabWidth": 4,
     "useTabs": false,
     "semi": true,
     "quoteProps": "as-needed",
