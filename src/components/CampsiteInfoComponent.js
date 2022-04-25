@@ -105,8 +105,8 @@ class CommentForm extends Component {
 
     handleComment(event) {
         this.toggleModal();
-        alert('Author:' + JSON.stringify(event.author) + 'Rating:' + JSON.stringify(event.rating) + 'Comment:' + JSON.stringify(event.text));
-        console.log('Author:' + JSON.stringify(event.author) + 'Rating:' + JSON.stringify(event.rating) + 'Comment:' + JSON.stringify(event.text));
+        alert('Author: ' + JSON.stringify(event.author) + ' Rating: ' + JSON.stringify(event.rating) + ' Comment: ' + JSON.stringify(event.text));
+        console.log('Author: ' + JSON.stringify(event.author) + ' Rating: ' + JSON.stringify(event.rating) + ' Comment: ' + JSON.stringify(event.text));
         event.preventDefault();
     }
 
