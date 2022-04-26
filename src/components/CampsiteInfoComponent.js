@@ -1,21 +1,10 @@
-import React, {Component} from 'react';
-import {
-    Card,
-    CardImg,
-    CardText,
-    Button,
-    Modal,
-    ModalHeader,
-    CardBody,
-    Breadcrumb,
-    BreadcrumbItem,
-    Label,
-    ModalBody
-} from 'reactstrap';
-import {Link} from 'react-router-dom';
-import {Control, LocalForm, Errors} from 'react-redux-form';
+import React, { Component } from 'react';
+import { Card, CardImg, CardText, Button, Modal, ModalHeader, CardBody, Breadcrumb, BreadcrumbItem, Label, ModalBody } from 'reactstrap';
+import { Link } from 'react-router-dom';
+import { Control, LocalForm, Errors } from 'react-redux-form';
+import { Loading } from './LoadingComponent';
 
-function RenderCampsite({campsite}) {
+function RenderCampsite({ campsite }) {
     return (
         <div className="col-md-5 m-1">
             <Card>
@@ -28,7 +17,7 @@ function RenderCampsite({campsite}) {
     );
 }
 
-function RenderComments({comments, addComment, campsiteId}) {
+function RenderComments({ comments, addComment, campsiteId }) {
     if (comments) {
         return (
             <div className="col-md-5 m-1">
@@ -56,6 +45,28 @@ function RenderComments({comments, addComment, campsiteId}) {
 }
 
 function CampsiteInfo(props) {
+
+    if (props.isLoading) {
+        return (
+            <div className="container">
+                <div className="row">
+                    <Loading />
+                </div>
+            </div>
+        );
+    }
+    if (props.errMess) {
+        return (
+            <div className="container">
+                <div className="row">
+                    <div className="col">
+                        <h4>{props.errMess}</h4>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+    
     if (props.campsite) {
         return (
             <div className="container">
@@ -73,11 +84,7 @@ function CampsiteInfo(props) {
                 </div>
                 <div className="row">
                     <RenderCampsite campsite={props.campsite} />
-                    <RenderComments
-                        comments={props.comments}
-                        addComment={props.addComment}
-                        campsiteId={props.campsite.id}
-                    />
+                    <RenderComments comments={props.comments} addComment={props.addComment} campsiteId={props.campsite.id} />
                 </div>
             </div>
         );
@@ -109,12 +116,7 @@ class CommentForm extends Component {
 
     handleComment(values) {
         this.toggleModal();
-        this.props.addComment(
-            this.props.campsiteId,
-            values.rating,
-            values.author,
-            values.text
-        );
+        this.props.addComment(this.props.campsiteId, values.rating, values.author, values.text);
     }
 
     render() {
@@ -130,13 +132,7 @@ class CommentForm extends Component {
                         <LocalForm onSubmit={values => this.handleComment(values)}>
                             <div className="form-group">
                                 <Label htmlFor="rating">Rating</Label>
-                                <Control.select
-                                    model=".rating"
-                                    id="rating"
-                                    name="rating"
-                                    className="form-control"
-                                    defaultValue="1"
-                                >
+                                <Control.select model=".rating" id="rating" name="rating" className="form-control" defaultValue="1">
                                     <option>1</option>
                                     <option>2</option>
                                     <option>3</option>
@@ -172,13 +168,7 @@ class CommentForm extends Component {
                             </div>
                             <div className="form-group">
                                 <Label htmlFor="text">Your Feedback</Label>
-                                <Control.textarea
-                                    model=".text"
-                                    id="text"
-                                    name="text"
-                                    rows="6"
-                                    className="form-control"
-                                />
+                                <Control.textarea model=".text" id="text" name="text" rows="6" className="form-control" />
                             </div>
                             <Button type="submit" value="submit" color="primary">
                                 Submit
