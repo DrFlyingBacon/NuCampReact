@@ -27,7 +27,7 @@ function Home(props) {
             <div className="row">
                 <div className="col-md m-1">
                     <RenderCard 
-                        item={props.promotion} 
+                        item={props.campsite} 
                         isLoading={props.promotionLoading} 
                         errMess={props.promotionErrMess} 
                     />
