@@ -58,7 +58,6 @@ function RenderComments({ comments, postComment, campsiteId }) {
 }
 
 function CampsiteInfo(props) {
-
     if (props.isLoading) {
         return (
             <div className="container">
@@ -79,7 +78,7 @@ function CampsiteInfo(props) {
             </div>
         );
     }
-    
+
     if (props.campsite) {
         return (
             <div className="container">
@@ -97,11 +96,7 @@ function CampsiteInfo(props) {
                 </div>
                 <div className="row">
                     <RenderCampsite campsite={props.campsite} />
-                    <RenderComments 
-                        comments={props.comments} 
-                        postComment={props.postComment} 
-                        campsiteId={props.campsite.id} 
-                    />
+                    <RenderComments comments={props.comments} postComment={props.postComment} campsiteId={props.campsite.id} />
                 </div>
             </div>
         );
